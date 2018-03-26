@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   clicked(){
-    // go to Book Listing Page
+    // go to Book Listing Page -- Check
     this.router.navigate(['/home']);
    }
 
