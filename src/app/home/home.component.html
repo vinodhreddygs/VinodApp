@@ -1,16 +1,41 @@
 <div class="container">
 
-<div class="click">
+  <!-- <div class="click">
   <button class="btn btn-primary" (click)="addBook()" >+New Book</button>
+</div> -->
+  <nav>
+    <a routerLink="/books/new">
+      <b>+New Book</b>
+    </a>
+  </nav>
+
+  <h1>Books</h1>
+<div class="table-responsive-md">
+  <table class="table table-bordered table-hover" align="center">
+    <tr class="table-success">
+      <th>Sl No</th>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>Price</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    <tr *ngFor="let book of bookCollection let i=index" class="taco">
+      <td>{{i+1}}</td>
+      <td>{{book.title}}</td>
+      <td>{{book.author}}</td>
+      <td>{{book.publisher}}</td>
+      <td> {{book.price}}</td>
+      <td>
+        <a [routerLink]="['/books/edit', book.bookId]">
+          <i class="fa fa-edit"></i>
+        </a>
+      </td>
+      <td>
+        <i (click)="deleteBook(i)" class="fa fa-remove"></i>
+      </td>
+    </tr>
+  </table>
 </div>
-<h1>Books</h1>
-<table border align="center">
-  <tr>
-    <th>Sl No</th>
-    <th>Title</th>
-    <th>Authour</th>
-    <th>Publisher</th>
-    <th>Price</th>
-  </tr>
-</table>
 </div>

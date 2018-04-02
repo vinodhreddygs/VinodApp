@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { BookService } from '../book.service';
+
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,21 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  bookCollection;
+  //bookId;
 
+  constructor(
+    private bookService: BookService, private router:Router 
+  ) {  }
+   
+ 
   ngOnInit() {
+    this.bookCollection =  this.bookService.getBooks();
+   
+   
   }
-
+  deleteBook(index){
+    this.bookService.books.splice(index, 1);
+  }
+  
 }
