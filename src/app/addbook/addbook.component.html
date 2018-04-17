@@ -1,28 +1,4 @@
-<!-- <h1>Add New Book</h1>
-
-<div class="container">
-  <form #userForm="ngForm" (ngSubmit)="onSubmit(book)">
-    <div class="form-group">
-      <label>Title</label>
-      <input type="text" class="title" name="title" [(ngModel)]="book.title">
-    </div>
-    <div class="form-group">
-      <label>Authour</label>
-      <input type="text" class="authour" name="authour" [(ngModel)]="book.authour">
-    </div>
-    <div class="form-group">
-      <label>Publisher</label>
-      <input type="text" class="publisher" name="publisher" [(ngModel)]="book.publisher">
-    </div>
-    <div class="form-group">
-      <label>Price</label>
-      <input type="text" class="price" name="price" [(ngModel)]="book.price">
-    </div>
-    <button id="cancel" class="btn btn-secondary" name="cancel" (click)="reset()">Cancel</button>
-
-    <button type="submit" class="btn btn-primary" name="submit">Save</button>
-  </form>
-</div> -->
+<app-navbar></app-navbar>
 <h1>Add New Book</h1>
 <div class="container-fluid">
 
@@ -30,28 +6,57 @@
     <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
       <form [formGroup]="userForm" (ngSubmit)="onSubmit(book)" class="form-horizontal">
         <div class="form-group">
-          <label><b>Title:</b></label>
-          <input type="text" class="title" #refName formControlName="title" [(ngModel)]="book.title">
-          
+          <label for="title">
+            <b>Title:</b>
+          </label>
+          <input type="text" id="title" #refName formControlName="title" [(ngModel)]="book.title">
+
           <div *ngIf="userForm.controls['title'].hasError('required') && userForm.controls['title'].touched" class="alert alert-danger">
             Title is required
           </div>
         </div>
         <div class="form-group">
-          <label><b>Author:</b></label>
-          <input type="text" class="author" formControlName="author" [(ngModel)]="book.author">
+          <label for="author">
+            <b>Author:</b>
+          </label>
+          <input type="text" id="author" formControlName="author" [(ngModel)]="book.author">
+          <div *ngIf="userForm.controls['author'].hasError('required') && userForm.controls['author'].touched" class="alert alert-danger">
+            Author Name is required
+          </div>
+          <div *ngIf="userForm.controls['author'].hasError('minlength')  && userForm.controls['author'].dirty" class="alert alert-danger">
+            Please enter atleast 2 characters
+          </div>
+          <div *ngIf="userForm.controls['author'].hasError('maxlength')  && userForm.controls['author'].dirty" class="alert alert-danger">
+            Author should not exceed 10 characters
+          </div>
         </div>
         <div class="form-group">
-          <label><b>Publisher:</b></label>
-          <input type="text" class="publisher" formControlName="publisher" [(ngModel)]="book.publisher">
+          <label for="publisher">
+            <b>Publisher:</b>
+          </label>
+          <input type="text" id="publisher" formControlName="publisher" [(ngModel)]="book.publisher">
+          <div *ngIf="userForm.controls['publisher'].hasError('required') && userForm.controls['publisher'].touched" class="alert alert-danger">
+            Author Name is required
+          </div>
+          <div *ngIf="userForm.controls['publisher'].hasError('minlength')  && userForm.controls['publisher'].dirty" class="alert alert-danger">
+            Please enter atleast 2 characters
+          </div>
+          <div *ngIf="userForm.controls['publisher'].hasError('maxlength')  && userForm.controls['publisher'].dirty" class="alert alert-danger">
+            Should not exceed 10 characters
+          </div>
         </div>
         <div class="form-group">
-          <label><b>Price:</b></label>
-          <input type="text" class="price" formControlName="price" [(ngModel)]="book.price">
+          <label for="price">
+            <b>Price:</b>
+          </label>
+          <input type="text" id="price" formControlName="price" name="price" [(ngModel)]="book.price">
+          <div *ngIf="userForm.controls['price'].hasError('pattern') && userForm.controls['price'].dirty" class="alert alert-danger">
+            Price should be max 4 digits only
+          </div>
         </div>
-        <button id="cancel" class="btn btn-secondary" name="cancel" (click)="reset()">Cancel</button>
+        <button id="cancel" class="btn btn-secondary button" name="cancel" (click)="reset()">Cancel</button>
 
-        <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary" name="submit">Save</button>
+        <button type="submit" [disabled]="!userForm.valid" class="btn btn-primary button" name="submit">Save</button>
       </form>
     </div>
   </div>

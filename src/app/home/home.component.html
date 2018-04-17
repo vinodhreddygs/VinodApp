@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="container">
 
   <!-- <div class="click">
@@ -10,32 +11,32 @@
   </nav>
 
   <h1>Books</h1>
-<div class="table-responsive-md">
-  <table class="table table-bordered table-hover" align="center">
-    <tr class="table-success">
-      <th>Sl No</th>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Publisher</th>
-      <th>Price</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-    <tr *ngFor="let book of bookCollection let i=index" class="taco">
-      <td>{{i+1}}</td>
-      <td>{{book.title}}</td>
-      <td>{{book.author}}</td>
-      <td>{{book.publisher}}</td>
-      <td> {{book.price}}</td>
-      <td>
-        <a [routerLink]="['/books/edit', book.bookId]">
-          <i class="fa fa-edit"></i>
-        </a>
-      </td>
-      <td>
-        <i (click)="deleteBook(i)" class="fa fa-remove"></i>
-      </td>
-    </tr>
-  </table>
-</div>
+  <div class="table-responsive-md">
+    <table class="table table-bordered table-hover" align="center">
+      <tr class="table-success">
+        <th>Sl No</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Price</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr *ngFor="let book of bookCollection" class="taco">
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.publisher}}</td>
+        <td> {{book.price}}</td>
+        <td>
+          <a [routerLink]="['/books/edit', book.id]">
+            <i class="fa fa-edit"></i>
+          </a>
+        </td>
+        <td>
+          <i (click)="deleteBook(book.id)" class="fa fa-remove"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

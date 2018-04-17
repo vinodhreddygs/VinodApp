@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <nav>
+    <a routerLink="/users/new">
+      <b>+Add User</b>
+    </a>
+  </nav>
+
+  <h1>Users</h1>
+
+  <table class="table table-bordered table-hover" align="center">
+    <tr class="table-success">
+      <th>First_Name</th>
+      <th>Last_Name</th>
+      <th>Email_Address</th>
+    </tr>
+    <tr *ngFor="let user of userCollection" class="taco">
+      <td>{{user.First_Name}}</td>
+      <td>{{user.Last_Name}}</td>
+      <td>{{user.Email_Address}}</td>
+    </tr>
+  </table>
+</div>

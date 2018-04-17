@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm  navbar-default">
-    <a class="navbar-brand" routerLink="#">ngProject</a>
+  <a class="navbar-brand" routerLink='#'>ngProject</a>
   <ul class="nav navbar-nav">
     <li routerLinkActive="active current">
       <a class="nav-link" routerLink="/home">Books</a>
@@ -7,7 +7,13 @@
     <li routerLinkActive="active current">
       <a class="nav-link" routerLink="/posts">Posts</a>
     </li>
-    
-  </ul>
-</nav>
+    <li routerLinkActive="active current">
+      <a class="nav-link" routerLink="/users">Users</a>
+    </li>
+    <li routerLinkActive="active current">
+      <a class="nav-link color" (click)="logout()">logout</a>
+    </li>
 
+  </ul>
+
+</nav>

@@ -7,6 +7,11 @@ import { EditbookComponent } from './editbook/editbook.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BaseComponent } from './base/base.component';
 import { PostsComponent } from './posts/posts.component';
+import { UsersComponent } from './users/users.component';
+import { AdduserComponent } from './adduser/adduser.component';
+
+
+
 
 
 
@@ -18,7 +23,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },  
   { path: 'books/new', component: AddbookComponent },
   { path: 'books/edit/:id', component: EditbookComponent }, 
-  { path: 'posts', component: PostsComponent },     
+  { path: 'posts', component: PostsComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'users/new', component: AdduserComponent },       
   
    { path: '', redirectTo: '/login', pathMatch: 'full'},
 ];

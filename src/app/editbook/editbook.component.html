@@ -1,35 +1,65 @@
+<app-navbar></app-navbar>
 <h1>Edit Book</h1>
 
-<div class="container">
-  <div  class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-    <form #userForm="ngForm" (ngSubmit)="onSubmit(editbook)">
-      <div class="form-group">
-        <label>
-          <b>Title:</b>
-        </label>
-        <input type="text" class="title" name="title" [(ngModel)]="editbook.title" readOnly>
-      </div>
-      <div class="form-group">
-        <label>
-          <b>Author:</b>
-        </label>
-        <input type="text" class="author" name="author" [(ngModel)]="editbook.author">
-      </div>
-      <div class="form-group">
-        <label>
-          <b>Publisher:</b>
-        </label>
-        <input type="text" class="publisher" name="publisher" [(ngModel)]="editbook.publisher">
-      </div>
-      <div class="form-group">
-        <label>
-          <b>Price:</b>
-        </label>
-        <input type="text" class="price" name="price" [(ngModel)]="editbook.price">
-      </div>
-      <button id="cancel" class="btn btn-secondary" name="cancel" (click)="reset()">Cancel</button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+      <form #userForm="ngForm" (ngSubmit)="onSubmit(editbook)">
+        <div class="form-group">
+          <label for="title">
+            <b>Title:</b>
+          </label>
+          <input type="text" id="title" name="title" [(ngModel)]="editbook.title" readOnly>
+        </div>
+        <div class="form-group">
+          <label for="author">
+            <b>Author:</b>
+          </label>
+          <input type="text" id="author" name="author" #refAuthor="ngModel" minlength="2" maxlength="10" required [(ngModel)]="editbook.author">
+          <div *ngIf="refAuthor.errors && (refAuthor.dirty || refAuthor.touched)" class="alert alert-danger">
+            <div [hidden]="!refAuthor.errors.minlength">
+              Please enter atleast 2 characters
+            </div>
+            <div [hidden]="!refAuthor.errors.maxlength">
+              Please enter less than 10 characters
+            </div>
+            <div [hidden]="!refAuthor.errors.required">
+              Author Name is required
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="publisher">
+            <b>Publisher:</b>
+          </label>
+          <input type="text" id="publisher" name="publisher" #refPublisher="ngModel" minlength="2" maxlength="10" required [(ngModel)]="editbook.publisher">
+          <div *ngIf="refPublisher.errors && (refPublisher.dirty || refPublisher.touched)" class="alert alert-danger">
+            <div [hidden]="!refPublisher.errors.minlength">
+              Please enter atleast 2 characters
+            </div>
+            <div [hidden]="!refPublisher.errors.required">
+              Publisher Name is required
+            </div>
+            <div *ngIf="refPublisher.errors.maxlength  && refPublisher.dirty" class="alert alert-danger">
+              Should not exceed 10 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="price">
+            <b>Price:</b>
+          </label>
+          <input type="text" id="price" name="price" #refPrice="ngModel" pattern="^[0-9]{1,4}$" [(ngModel)]="editbook.price">
+          <div *ngIf="refPrice.errors && (refPrice.dirty || refPrice.touched)" class="alert alert-danger">
+            <div [hidden]="!refPrice.errors.pattern">
+              Price should be max 4 digits only
+            </div>
+          </div>
+        </div>
+        <button id="cancel" class="btn btn-secondary button" name="cancel" (click)="reset()">Cancel</button>
 
-      <button type="submit" class="btn btn-primary" name="submit">Save</button>
-    </form>
+        <button [disabled]="!userForm.form.valid" type="submit" class="btn btn-primary button" name="submit">Save</button>
+      </form>
+    </div>
   </div>
 </div>
