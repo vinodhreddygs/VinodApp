@@ -16,7 +16,7 @@ import { PostsComponent } from './posts/posts.component';
 import { UsersComponent } from './users/users.component';
 import { AdduserComponent } from './adduser/adduser.component';
 import {UserService} from './services/user/user.service';
-import { PasswordValidationDirective } from './password-validation.directive';
+import { PasswordValidationDirective } from './directives/passwordValidation/password-validation.directive';
 import {AuthService} from './services/auth/auth.service';
 
 
